@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes excuses du cœur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            font-size: 200px;
+            color: rgba(255, 255, 255, 0.1);
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .message {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: left;
+            line-height: 1.6;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .promises {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .promise-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .promise-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .promise-card i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ff6b6b;
+        }
+
+        .flowers {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .flower {
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .flower:nth-child(2) { animation-delay: 0.5s; }
+        .flower:nth-child(3) { animation-delay: 1s; }
+        .flower:nth-child(4) { animation-delay: 1.5s; }
+        .flower:nth-child(5) { animation-delay: 2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .forgive-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            margin-top: 20px;
+        }
+
+        .forgive-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .hidden-message {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .music-player {
+            margin-top: 20px;
+        }
+
+        .music-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .memories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .memory {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .memory:hover {
+            transform: scale(1.2);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 20px; }
+            .message { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart">❤️</div>
+        
+        <h1>Je suis désolé</h1>
+        <p class="subtitle">Mon amour, je tiens à m'excuser du fond du cœur</p>
+        
+        <div class="message">
+            <p>Ma chérie,</p>
+            <br>
+            <p>Je sais que je t'ai blessée et je le regrette profondément. Chaque mot, chaque geste qui t'a fait du poids me hante.</p>
+            <br>
+            <p>Tu es la personne la plus importante dans ma vie, et voir que je t'ai causé de la peine me brise le cœur. Je n'aurais jamais dû agir ainsi.</p>
+            <br>
+            <p>Je promets de faire tout mon possible pour regagner ta confiance et te montrer à quel point tu comptes pour moi.</p>
+        </div>
+
+        <div class="flowers">
+            <div class="flower">🌹</div>
+            <div class="flower">💐</div>
+            <div class="flower">🌸</div>
+            <div class="flower">🌺</div>
+            <div class="flower">🌷</div>
+        </div>
+
+        <h2>Mes promesses pour toi</h2>
+        <div class="promises">
+            <div class="promise-card">
+                <i class="fas fa-heart"></i>
+                <h3>Écouter davantage</h3>
+                <p>Je serai plus attentif à tes besoins et à tes sentiments</p>
+            </div>
+            <div class="promise-card">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Plus de patience</h3>
+                <p>Je travaillerai sur ma patience et ma compréhension</p>
+            </div>
+            <div class="promise-card">
+                <i class="fas fa-star"></i>
+                <h3>Te chérir chaque jour</h3>
+                <p>Je te montrerai chaque jour à quel point tu es spéciale</p>
+            </div>
+        </div>
+
+        <div class="memories">
+            <div class="memory">💖</div>
+            <div class="memory">⭐</div>
+            <div class="memory">🌈</div>
+            <div class="memory">🎀</div>
+            <div class="memory">🦋</div>
+        </div>
+
+        <button class="forgive-btn" id="forgiveBtn">
+            <i class="fas fa-heart"></i> Peux-tu me pardonner ?
+        </button>
+
+        <div class="hidden-message" id="hiddenMessage">
+            <h3>Merci mon amour ! 💕</h3>
+            <p>Tu me rends l'homme le plus heureux du monde. Je te promets de tout faire pour être meilleur.</p>
+            <p>Je t'aime plus que tout au monde.</p>
+        </div>
+
+        <div class="music-player">
+            <button class="music-btn" id="musicBtn">
+                <i class="fas fa-music"></i>
+            </button>
+        </div>
+    </div>
+
+    <audio id="romanticMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const forgiveBtn = document.getElementById('forgiveBtn');
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            const musicBtn = document.getElementById('musicBtn');
+            const music = document.getElementById('romanticMusic');
+            let musicPlaying = false;
+
+            // Effet de confettis quand elle clique sur pardonner
+            forgiveBtn.addEventListener('click', function() {
+                // Animation du bouton
+                this.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+
+                // Afficher le message caché
+                hiddenMessage.style.display = 'block';
+
+                // Créer des cœurs qui tombent
+                createHearts();
+
+                // Jouer un son doux
+                const heartSound = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==');
+                heartSound.play();
+
+                // Changer le texte du bouton
+                this.innerHTML = '<i class="fas fa-heart"></i> Je t\'aime !';
+                this.disabled = true;
+            });
+
+            // Contrôle de la musique
+            musicBtn.addEventListener('click', function() {
+                if (musicPlaying) {
+                    music.pause();
+                    this.innerHTML = '<i class="fas fa-music"></i>';
+                    musicPlaying = false;
+                } else {
+                    music.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                    musicPlaying = true;
+                }
+            });
+
+            // Fonction pour créer des cœurs animés
+            function createHearts() {
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.innerHTML = '❤️';
+                        heart.style.position = 'fixed';
+                        heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                        heart.style.left = Math.random() * 100 + 'vw';
+                        heart.style.top = '-50px';
+                        heart.style.opacity = '0.7';
+                        heart.style.zIndex = '9999';
+                        heart.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                        
+                        document.body.appendChild(heart);
+
+                        // Supprimer après l'animation
+                        setTimeout(() => {
+                            heart.remove();
+                        }, 5000);
+                    }, i * 200);
+                }
+            }
+
+            // Ajouter l'animation fall
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fall {
+                    to {
+                        transform: translateY(100vh) rotate(360deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Effet de frappe au clavier pour le message
+            const messageText = hiddenMessage.querySelector('p');
+            const originalText = messageText.textContent;
+            
+            forgiveBtn.addEventListener('click', function() {
+                typeWriter(messageText, originalText);
+            });
+
+            function typeWriter(element, text, speed = 50) {
+                element.textContent = '';
+                let i = 0;
+                function typing() {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typing, speed);
+                    }
+                }
+                typing();
+            }
+        });
+    </script>
+</body>
+</html>
